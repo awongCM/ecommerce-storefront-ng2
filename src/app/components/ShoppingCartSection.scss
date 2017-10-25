@@ -1,0 +1,106 @@
+.shopping-cart {
+  background-color: rgba(0,0,0,0.1); 
+
+  //stretch all the way to the bottom
+  min-height: calc(100vh - 50px);
+
+  h2 {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 48px;
+  }
+  
+  .cart-item-list {
+    padding-bottom: 30px;
+
+    .cart-items-table {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 50px;
+
+      .table-headings {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 50px;
+        color: grey;
+        border-bottom: 1px solid grey;
+
+        .heading {
+          display: block;
+          text-transform: uppercase;
+
+          //first columm width set wider
+          &:first-child {
+            width: 350px;
+          }
+        }
+      }
+
+      ul {
+        li {
+          display: flex; 
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 30px 0 40px;  
+          border-bottom: 1px solid grey;
+        }
+      }
+
+      .total-price-container{
+        float: right;
+        font-size: 18px;
+        padding: 30px 0;
+        text-transform: uppercase;
+        color: grey;
+        width: 400px;
+
+        .cell-wrapper{
+          > span {
+            padding-bottom: 20px;
+            display: block;
+          }
+          .subtotal-price,
+          .total-price {
+            padding-bottom: 20px;;
+
+            span:last-child {
+              float: right;
+            }
+          }
+          .total-price {
+            span:last-child {
+              color: black;
+            }
+          }
+        }
+      }
+
+      .buttons-layout {
+        display: flex;
+        justify-content: space-between;
+        clear: both;
+
+        button {
+          width: 200px;
+          height: 50px;
+          text-transform: uppercase;
+          font-size: 16px;
+
+          &:first-child {
+            background: white;
+            border-bottom: 1px solid black;
+            width: 183x;
+          }
+
+          &:last-child{
+            background: black;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+<div class="product-details" *ngIf="product">
+    <h2>Home / Plates / <span>{{product.title}}</span> </h2>
+    <div class="product-detail">
+      <div class="product-container">
+        <div class="product-media">
+            <img src="/assets/{{product.image}}" alt="">
+        </div>
+        <div class="product-description">
+            <div class="content">
+                <span class="brand">{{product.brand}}</span>
+                <span class="title">{{product.title}}</span>
+                <p class="price">${{product.price}}</p>
+                <p class="description">{{product.description}}</p>
+            </div>
+            <div class="controls-group">
+              <div class="qty-buttons">
+                  <div class="qty-wrapper">
+                      <div class="qty">
+                          <span>{{quantity}}</span>
+                      </div>
+                      <div class="btn-wrapper">
+                          <button (click)="incrementQty()"> + </button>
+                          <button (click)="decrementQty()"> - </button>
+                      </div>
+                  </div>
+              </div>  
+              <div class="btn-wrapper-group">
+                <button (click)="addtoCart(product)">Add to Cart</button>
+              </div>  
+            </div>
+        </div>
+      </div>
+    </div>
+    
+</div>
+

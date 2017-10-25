@@ -1,0 +1,31 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid grey;
+  align-items: center;
+}
+
+.header-menu {
+  width: 400px;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+
+    li {
+      display: inline-block;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.header-cart {
+  text-transform: uppercase;
+  
+  &:hover {
+    cursor: pointer;
+  }
+}

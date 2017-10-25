@@ -1,0 +1,120 @@
+.product-details{
+  text-align: center;
+
+  h2 {
+    text-transform: uppercase;
+    font-size: 18px;
+    padding: 30px 0;
+    span {
+      color: grey;
+    }
+  }
+
+  .product-container {
+    width: 1200px;
+    margin: auto;
+    height: 400px;
+    .product-media {
+      display: inline-block;
+      vertical-align: top;
+      width: 600px;
+      height: 100%;
+      position: relative;
+      padding: 34.7% 0 0 0;
+
+      img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+    .product-description {
+      display: inline-block;
+      width: 400px;
+      height: 100%;
+      margin-left: 60px;
+
+      .content {
+        padding-bottom: 30px;
+        border-bottom: 1px solid grey;
+
+        .brand {
+          font-size: 14px;
+          display: block;
+          color: grey;
+        }
+        .title {
+          font-size: 32px;
+          line-height: 100px;
+          height: 100px;
+          display: block;
+        }
+        .price {
+          color: gray;
+          margin-bottom: 30px;
+        }
+        .description {
+          color: gray;
+          line-height: 30px;
+        }
+      }
+    }
+
+  }
+
+  .controls-group {
+    padding-top: 30px;
+    border-top: 1px solid grey;
+    
+    .qty-buttons {
+      display: inline-block;
+      vertical-align: top;
+      .qty-wrapper {
+        .qty {
+          background: grey;
+          height: 40px;
+          width: 30px;
+          text-align: center;
+          display: inline-block;
+          vertical-align: middle;
+          line-height: 40px;
+    
+        }
+        .btn-wrapper {
+          display: inline-block;
+          vertical-align: middle;
+          button {
+            width: 25px;
+            height: 20px;
+            display: block;
+            background: rgba(0,0,0,0.5);
+            &:first-child {
+              border-bottom: 1px solid white;
+            }
+          }
+        } 
+      }
+    }
+    .btn-wrapper-group {
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 10px;
+
+      button {
+        width: 150px;
+        height: 40px;
+        text-transform: uppercase;
+        color: white;
+        background: black;
+      }
+    }
+    
+  }
+    
+  
+}

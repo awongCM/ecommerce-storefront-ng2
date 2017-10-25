@@ -1,0 +1,43 @@
+@import 'node_modules/reset-css/_reset';
+
+//Global Styles
+html,body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+ }
+
+ button {
+   cursor: pointer;
+   border: 0;
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   font-size: inherit;
+   outline: none;
+ }
+
+ img {
+   width: 100%;
+ }
+
+ .btn {
+  display: block;
+  padding: 10px 20px;
+}
+
+.btn-black {
+  background: black;
+  color: white;
+}

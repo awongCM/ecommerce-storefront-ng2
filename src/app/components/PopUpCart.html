@@ -1,0 +1,38 @@
+<div class="popup-cart-container" (click)="swapClass()">
+  <a><span>My Cart <i>{{total_cart_items}}</i></span></a>
+  <div class="popup-cart" [ngClass]="{'active': swapped === true}">
+      <div class="popup-cart-list">
+          <ul>
+            <li class="popup-cart-item" *ngFor="let cartItem of cartItems" >
+              
+              <div class="popup-cart-item-description">
+                <div class="media">
+                    <img src="/assets/{{cartItem.image}}" alt="">
+                </div>
+                <div class="media-details">
+                    <span>{{cartItem.title}}</span>
+                    <p>{{cartItem.brand}}</p>
+                    <p>{{cartItem.quantity}}</p>
+                    <p>{{cartItem.quantity * cartItem.price | number : '1.2-2' }}</p>
+                </div>
+              </div>
+              <div class="popup-cart-remove">
+                  <span (click)="removeCartItem(cartItem); $event.stopPropagation()">X</span>
+              </div>
+             </li>
+          </ul>
+      </div>
+      <div class="popup-total-price" *ngIf="cartItems.length > 0">
+        <span>Total</span>
+        <span>${{total_price | number : '1.2-2'}}</span>
+      </div>
+      <div class="buttons-layout" *ngIf="cartItems.length > 0">
+        <button [routerLink]="['/cart']" >View Cart</button>
+        <button class="btn-black">Checkout</button>
+      </div>
+      <div class="buttons-layout" *ngIf="cartItems.length === 0">
+        <span class="message">You do not have any items in your cart</span>
+      </div>
+  </div>  
+  
+</div>
