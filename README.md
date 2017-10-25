@@ -16,6 +16,9 @@ The ecommerce app was built using the following tools/concepts
 * RJXS/Oservables
 * Unit Testing - TODO
 
+## Required Environment Version
+* NodeJS - 6.9.1
+
 ## Instructions to run
 1. Download the source folder
 2. Run `npm i`
