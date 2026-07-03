@@ -1,0 +1,43 @@
+<div class="shopping-cart">
+  <h2>Shopping Cart</h2>
+
+  <div class="cart-item-list">
+    @if (cartItems().length > 0) {
+      <div class="cart-items-table">
+        <div class="table-headings">
+          <span class="heading">Product</span>
+          <span class="heading">Quantity</span>
+          <span class="heading">Total</span>
+          <span class="heading">Action</span>
+        </div>
+        <ul>
+          @for (cartItem of cartItems(); track cartItem.id) {
+            <app-cart-item [cartItem]="cartItem" />
+          }
+        </ul>
+        <div class="total-price-container">
+          <div class="cell-wrapper">
+            <span>Cart Overview</span>
+            <div class="subtotal-price">
+              <span>Sub Total</span>
+              <span>${{ cartTotal() | number: '1.2-2' }}</span>
+            </div>
+            <div class="total-price">
+              <span>Total</span>
+              <span>${{ cartTotal() | number: '1.2-2' }} USD</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons-layout">
+          <button type="button" (click)="goBack()">Continue Shopping</button>
+          <button type="button">Checkout (${{ cartTotal() | number: '1.2-2' }})</button>
+        </div>
+      </div>
+    } @else {
+      <div class="cart-items-table">
+        <h2>You don't have any items in your shopping cart. Please continue to shop.</h2>
+      </div>
+    }
+  </div>
+</div>
