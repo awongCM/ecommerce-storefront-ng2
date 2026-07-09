@@ -10,7 +10,7 @@
           <div class="content">
             <span class="brand">{{ product.brand }}</span>
             <span class="title">{{ product.title }}</span>
-            <p class="price">${{ product.price }}</p>
+            <p class="price">${{ product.price | number: '1.2-2' }}</p>
             <p class="description">{{ product.description }}</p>
           </div>
           <div class="controls-group">
@@ -32,5 +32,11 @@
         </div>
       </div>
     </div>
+  </div>
+} @else if (isProductNotFound()) {
+  <div class="product-not-found">
+    <h2>Product not found</h2>
+    <p>We could not find a product with id {{ productId() }}.</p>
+    <a routerLink="/category">Back to shop</a>
   </div>
 }

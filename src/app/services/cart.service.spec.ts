@@ -29,8 +29,9 @@ describe('CartService', () => {
     service.addItem(item);
     service.addItem({ ...item, quantity: 2 });
 
-    expect(service.cartCount()).toBe(1);
+    expect(service.cartItems().length).toBe(1);
     expect(service.cartItems()[0].quantity).toBe(3);
+    expect(service.cartCount()).toBe(3);
     expect(service.cartTotal()).toBe(120);
   });
 
@@ -47,8 +48,45 @@ describe('CartService', () => {
     service.addItem(item);
     service.updateItem({ ...item, quantity: 1 });
     expect(service.cartItems()[0].quantity).toBe(1);
+    expect(service.cartCount()).toBe(1);
 
     service.removeItem(item);
     expect(service.cartItems()).toEqual([]);
+  });
+
+  it('rejects invalid quantities and ids', () => {
+    service.addItem({
+      id: 0,
+      brand: 'Kiriko',
+      title: 'Invalid id',
+      price: 10,
+      quantity: 1,
+      image: 'invalid.jpg',
+    });
+    service.addItem({
+      id: 3,
+      brand: 'Kiriko',
+      title: 'Invalid qty',
+      price: 10,
+      quantity: 0,
+      image: 'invalid.jpg',
+    });
+
+    expect(service.cartItems()).toEqual([]);
+    expect(service.cartCount()).toBe(0);
+  });
+
+  it('normalizes fractional quantities when adding items', () => {
+    service.addItem({
+      id: 4,
+      brand: 'Kiriko',
+      title: 'Bowl',
+      price: 15,
+      quantity: 2.8,
+      image: 'bowl.jpg',
+    });
+
+    expect(service.cartItems()[0].quantity).toBe(2);
+    expect(service.cartCount()).toBe(2);
   });
 });

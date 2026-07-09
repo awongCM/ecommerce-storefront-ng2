@@ -27,4 +27,8 @@ export const routes: Routes = [
         (m) => m.ShoppingCartSectionComponent
       ),
   },
+  {
+    path: '**',
+    redirectTo: 'category',
+  },
 ];

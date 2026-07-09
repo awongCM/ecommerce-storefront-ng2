@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  background: url('/assets/plates-header.jpg') no-repeat center center;
+  background-repeat: no-repeat;
+  background-position: center center;
   height: 300px;
 
   .banner-content {

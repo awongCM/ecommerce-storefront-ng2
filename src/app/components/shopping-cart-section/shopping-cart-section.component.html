@@ -12,7 +12,7 @@
         </div>
         <ul>
           @for (cartItem of cartItems(); track cartItem.id) {
-            <app-cart-item [cartItem]="cartItem" />
+            <li app-cart-item [cartItem]="cartItem"></li>
           }
         </ul>
         <div class="total-price-container">

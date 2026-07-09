@@ -1,42 +1,63 @@
-<div class="popup-cart-container" (click)="toggleCart($event)">
-  <a><span>My Cart <i>{{ cartCount() }}</i></span></a>
-  <div class="popup-cart" [ngClass]="{ active: isOpen() }">
-    <div class="popup-cart-list">
-      <ul>
-        @for (cartItem of cartItems(); track cartItem.id) {
-          <li class="popup-cart-item">
-            <div class="popup-cart-item-description">
-              <div class="media">
-                <img [src]="'assets/' + cartItem.image" [alt]="cartItem.title">
-              </div>
-              <div class="media-details">
-                <span>{{ cartItem.title }}</span>
-                <p>{{ cartItem.brand }}</p>
-                <p>{{ cartItem.quantity }}</p>
-                <p>{{ cartItem.quantity * cartItem.price | number: '1.2-2' }}</p>
-              </div>
-            </div>
-            <div class="popup-cart-remove">
-              <span (click)="removeCartItem(cartItem, $event)">X</span>
-            </div>
-          </li>
-        }
-      </ul>
-    </div>
+<div class="popup-cart-container">
+  <button
+    type="button"
+    class="popup-cart-toggle"
+    (click)="toggleCart()"
+    [attr.aria-expanded]="isOpen()"
+    aria-controls="popup-cart-panel"
+  >
+    My Cart <i>{{ cartCount() }}</i>
+  </button>
 
-    @if (cartItems().length > 0) {
-      <div class="popup-total-price">
-        <span>Total</span>
-        <span>${{ cartTotal() | number: '1.2-2' }}</span>
+  @if (isOpen()) {
+    <div
+      id="popup-cart-panel"
+      class="popup-cart active"
+      role="region"
+      aria-label="Shopping cart preview"
+    >
+      <div class="popup-cart-list">
+        <ul>
+          @for (cartItem of cartItems(); track cartItem.id) {
+            <li class="popup-cart-item">
+              <div class="popup-cart-item-description">
+                <div class="media">
+                  <img [src]="'assets/' + cartItem.image" [alt]="cartItem.title">
+                </div>
+                <div class="media-details">
+                  <span>{{ cartItem.title }}</span>
+                  <p>{{ cartItem.brand }}</p>
+                  <p>{{ cartItem.quantity }}</p>
+                  <p>{{ cartItem.quantity * cartItem.price | number: '1.2-2' }}</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="popup-cart-remove"
+                [attr.aria-label]="'Remove ' + cartItem.title + ' from cart'"
+                (click)="removeCartItem(cartItem)"
+              >
+                X
+              </button>
+            </li>
+          }
+        </ul>
       </div>
-      <div class="buttons-layout">
-        <button type="button" routerLink="/cart">View Cart</button>
-        <button type="button" class="btn-black">Checkout</button>
-      </div>
-    } @else {
-      <div class="buttons-layout">
-        <span class="message">You do not have any items in your cart</span>
-      </div>
-    }
-  </div>
+
+      @if (cartItems().length > 0) {
+        <div class="popup-total-price">
+          <span>Total</span>
+          <span>${{ cartTotal() | number: '1.2-2' }}</span>
+        </div>
+        <div class="buttons-layout">
+          <button type="button" (click)="viewCart()">View Cart</button>
+          <button type="button" class="btn-black">Checkout</button>
+        </div>
+      } @else {
+        <div class="buttons-layout">
+          <span class="message">You do not have any items in your cart</span>
+        </div>
+      }
+    </div>
+  }
 </div>

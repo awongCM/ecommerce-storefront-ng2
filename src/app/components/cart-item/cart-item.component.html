@@ -1,26 +1,31 @@
-<li>
-  <div class="cart-item-description">
-    <div class="media">
-      <img [src]="'assets/' + cartItem().image" [alt]="cartItem().title">
-    </div>
-    <div class="media-details">
-      <p>{{ cartItem().brand }}</p>
-      <span>{{ cartItem().title }}</span>
-    </div>
+<div class="cart-item-description">
+  <div class="media">
+    <img [src]="'assets/' + cartItem().image" [alt]="cartItem().title">
   </div>
-  <div class="cart-item-controls">
-    <div class="qty-wrapper">
-      <p class="qty">{{ cartItem().quantity }}</p>
-      <div class="btn-wrapper">
-        <button type="button" (click)="incrementQty()">+</button>
-        <button type="button" (click)="decrementQty()">-</button>
-      </div>
+  <div class="media-details">
+    <p>{{ cartItem().brand }}</p>
+    <span>{{ cartItem().title }}</span>
+  </div>
+</div>
+<div class="cart-item-controls">
+  <div class="qty-wrapper">
+    <p class="qty">{{ cartItem().quantity }}</p>
+    <div class="btn-wrapper">
+      <button type="button" (click)="incrementQty()">+</button>
+      <button type="button" (click)="decrementQty()">-</button>
     </div>
   </div>
-  <div class="cart-item-price">
-    <p>${{ cartItem().price * cartItem().quantity | number: '1.2-2' }}</p>
-  </div>
-  <div class="cart-item-action">
-    <span class="delete-icon" (click)="removeCartItem()">X</span>
-  </div>
-</li>
+</div>
+<div class="cart-item-price">
+  <p>${{ cartItem().price * cartItem().quantity | number: '1.2-2' }}</p>
+</div>
+<div class="cart-item-action">
+  <button
+    type="button"
+    class="delete-icon"
+    [attr.aria-label]="'Remove ' + cartItem().title + ' from cart'"
+    (click)="removeCartItem()"
+  >
+    X
+  </button>
+</div>
