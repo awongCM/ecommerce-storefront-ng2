@@ -1,34 +1,68 @@
-# Ecommerce StoreFront Angular2/4
+# Ecommerce Storefront (Angular 19)
 
-My first attempt building Angular2/Angular4 app
+A small ecommerce storefront originally built as a learning exercise in Angular 2/4, now modernized to **Angular 19** with standalone components, signals, and the Angular CLI.
 
-This project was built/scaffolded by this angular 2 project generator.  All of the project build/automation/deployment tools credit goes to this lovely Angular community.
+## What this project is for
 
-[Yeoman Angulars Fountain Generator](https://www.npmjs.com/package/generator-fountain-angular2)
+This repo is a sandbox for practicing frontend fundamentals through a familiar online shop:
 
-The ecommerce app was built using the following tools/concepts
+- Standalone components
+- Routing (`/category`, `/product/:id`, `/cart`)
+- Dependency injection with `inject()`
+- Reactive cart state with **signals** and computed values
+- Lazy-loaded routes
+- SCSS component styling
 
-* Components Design
-* Template Property Bindings
-* Services
-* Routing
-* Dependency Injection
-* RJXS/Oservables
-* Unit Testing - TODO
+## Requirements
 
-## Required Environment Versions
-* NodeJS - 6.9.1
+- Node.js 18+ (Node 20+ recommended)
+- npm 9+
 
-## Instructions to run
-1. Download the source folder
-2. Run `npm i`
-3. Run `npm run serve`
-4. Open `http://localhost:3000/category`
+## Run locally
 
-## Instructions to test - TODO
-Unfortunately, at present, I couldn't perform any unit testing for this project as there's an issue with one or two of older npm dependencies that couldn't compile any Angular components with their isolated units CSS/SASS files.  The community-scaffold project was originally designed to handle one global sass file only, but not for individual components' sass file. 
+```bash
+npm install
+npm start
+```
 
-In shortly, unless I get the definite answer/fix, this issue will have to be parked until further notice.
+Open [http://localhost:4200/category](http://localhost:4200/category).
 
-## Extra TODOs
-RXJS, Overservables, etc, etc
+## Build
+
+```bash
+npm run build
+```
+
+Production output is written to `dist/ecommerce-storefront-ng2`.
+
+## Test
+
+```bash
+npm test
+```
+
+## App flow
+
+1. Browse products on `/category`
+2. Open product details on `/product/:id`
+3. Add items to the in-memory cart
+4. Review items in the header popup cart or full `/cart` page
+
+Products are still mock data in `src/app/services/products.ts` — there is no backend, payment flow, or authentication.
+
+## Modernization notes
+
+Compared with the original Angular 2/4 version:
+
+| Before | After |
+|---|---|
+| NgModule bootstrap | Standalone `bootstrapApplication` |
+| Gulp + Webpack | Angular CLI |
+| RxJS `Subject` cart updates | Signal-based `CartService` |
+| `*ngFor` / `*ngIf` | `@for` / `@if` control flow |
+| `require()` templates | `templateUrl` / `styleUrl` |
+| `src/assets` | `public/assets` |
+
+## Original credits
+
+The first version was scaffolded with the [Yeoman Fountain Angular2 generator](https://www.npmjs.com/package/generator-fountain-angular2).

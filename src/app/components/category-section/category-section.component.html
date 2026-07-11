@@ -1,0 +1,31 @@
+<div class="category-section">
+  <div class="banner-media" [style.background-image]="'url(assets/plates-header.jpg)'">
+    <div class="banner-content">
+      <h1>Plates</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt interdum mi nec mollis. Proin neque ligula, venenatis in massa feugiat, pretium vehicula arcu.</p>
+    </div>
+  </div>
+
+  <div class="product-list">
+    <ul>
+      @for (product of products; track product.id) {
+        <li>
+          <div class="img-holder">
+            <div class="overlay-buttons">
+              <div class="buttons-layout">
+                <a class="btn btn-black" [routerLink]="['/product', product.id]">View Details</a>
+                <button class="btn add-to-cart-btn" type="button" (click)="addToCart(product)">Add to Cart</button>
+              </div>
+            </div>
+            <img [src]="'assets/' + product.image" [alt]="product.title">
+          </div>
+          <div class="product-list-description">
+            <p class="brand">{{ product.brand }}</p>
+            <p class="title">{{ product.title }}</p>
+            <p class="price">${{ product.price | number: '1.2-2' }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
